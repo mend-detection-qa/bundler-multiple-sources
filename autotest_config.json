@@ -1,44 +1,67 @@
 {
-  "description": "Autotest configuration for bundler-multiple-sources P1 probe — validates multiple source blocks in Gemfile. 4 direct deps, ~9 total.",
+  "description": "Autotest configuration for bundler-multiple-sources - Bundler multiple rubygems sources",
   "version": 1.7,
   "base_config": {
     "validate_scan_output": true,
-    "_comment_validate_scan_output": "Whether to validate the scan output/exit code. Options: true | false. Default: true",
     "scan_output": {
-      "security_scan_report_conclusion": "success",
-      "_comment_security_scan_report_conclusion": "Optional. Expected scan report conclusion. Options: 'success' | 'failure'.",
-      "expected_messages": [],
-      "_comment_expected_messages": "Optional. List of messages to validate in security check output/summary with severity levels."
+      "security_scan_report_conclusion": "failure",
+      "total_libs_scanned": {
+        "eq": 9
+      },
+      "expected_messages": []
     },
     "validate_dependency_tree": true,
-    "_comment_validate_dependency_tree": "Whether to validate the dependency tree.",
     "dependency_tree": {
       "check_dependency_tree_detection_status": true,
-      "_comment_check_dependency_tree_detection_status": "Whether to check if dependency tree was successfully detected.",
       "check_update_request_sca_results": false,
-      "expected_total_dependencies_number": { "gte": 8 },
-      "expected_direct_dependencies_number": { "eq": 4 },
-      "_comment_expected_dependencies_number": "Optional. Operators: gt, gte, lt, lte, eq.",
-      "direct_dependencies_names_list": { "contains": ["rack", "sinatra", "multi_json", "faraday"] },
-      "transitive_dependencies_names_list": { "contains": ["mustermann", "rack-protection", "tilt", "faraday-net_http"] },
-      "_comment_dependencies_names_list": "Optional. Operators: eq, contains, in, nin.",
-      "expected_package_managers": { "contains": ["ruby"] },
-      "_comment_expected_package_managers": "Optional.",
+      "expected_total_dependencies_number": {
+        "eq": 9
+      },
+      "expected_direct_dependencies_number": {
+        "eq": 4
+      },
+      "expected_transitive_dependencies_number": {
+        "eq": 5
+      },
+      "direct_dependencies_names_list": {
+        "eq": [
+          "faraday-2.9.0.gem",
+          "multi_json-1.15.0.gem",
+          "rack-3.0.10.gem",
+          "sinatra-4.0.0.gem"
+        ]
+      },
+      "transitive_dependencies_names_list": {
+        "eq": [
+          "faraday-net_http-3.0.2.gem",
+          "mustermann-3.0.0.gem",
+          "rack-protection-4.0.0.gem",
+          "ruby2_keywords-0.0.5.gem",
+          "tilt-2.4.0.gem"
+        ]
+      },
+      "expected_package_managers": {
+        "contains": ["ruby"]
+      },
       "validate_agent_versions": false,
       "expected_agent_version": "",
       "expected_plugin_version": "",
       "validate_mend_tags": false
     },
-    "validate_vulnerabilities_table": true,
-    "_comment_validate_vulnerabilities_table": "Whether to validate the vulnerabilities table.",
+    "validate_vulnerabilities_table": false,
     "vulnerabilities_table": {
       "check_vulnerabilities_table_structure": true,
-      "expected_total_vulnerabilities_number": { "gte": 0 },
-      "vulnerabilities_ids_list": { "contains": [] },
-      "vulnerabilities_names_list": { "contains": [] }
+      "expected_total_vulnerabilities_number": {
+        "gte": 0
+      },
+      "vulnerabilities_ids_list": {
+        "contains": []
+      },
+      "vulnerabilities_names_list": {
+        "contains": []
+      }
     },
     "validate_scanner_logs": false,
-    "_comment_validate_scanner_logs": "Whether to validate scanner logs.",
     "logs": {
       "check_scanner_logs": true,
       "detect_secrets": false,
@@ -48,19 +71,33 @@
     "reachability": {
       "check_reachability_status": true,
       "validate_issues": false,
-      "expected_reachable_cves": { "contains": [] },
-      "expected_unreachable_cves": { "contains": [] },
-      "expected_reachable_libraries": { "contains": [] },
-      "expected_unreachable_libraries": { "contains": [] },
-      "expected_total_reachable_count": { "gte": 0 },
-      "expected_total_unreachable_count": { "gte": 0 },
+      "expected_reachable_cves": {
+        "contains": []
+      },
+      "expected_unreachable_cves": {
+        "contains": []
+      },
+      "expected_reachable_libraries": {
+        "contains": []
+      },
+      "expected_unreachable_libraries": {
+        "contains": []
+      },
+      "expected_total_reachable_count": {
+        "gte": 0
+      },
+      "expected_total_unreachable_count": {
+        "gte": 0
+      },
       "expected_reachability_traces": []
     },
-    "validate_project_contributors": false,
+    "validate_project_contributors": true,
     "contributors": {
       "check_contributors_structure": true,
       "expected_contributors": [],
-      "expected_min_commits": { "gte": 1 },
+      "expected_min_commits": {
+        "gte": 1
+      },
       "expected_total_contributors": {}
     }
   }
