@@ -22,7 +22,7 @@
       "direct_dependencies_names_list": { "contains": ["rack", "sinatra", "multi_json", "faraday"] },
       "transitive_dependencies_names_list": { "contains": ["mustermann", "rack-protection", "tilt", "faraday-net_http"] },
       "_comment_dependencies_names_list": "Optional. Operators: eq, contains, in, nin.",
-      "expected_package_managers": { "contains": ["RUBYGEMS"] },
+      "expected_package_managers": { "contains": ["ruby"] },
       "_comment_expected_package_managers": "Optional.",
       "validate_agent_versions": false,
       "expected_agent_version": "",
