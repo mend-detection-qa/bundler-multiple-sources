@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby ">= 3.2"
+ruby ">= 4.0"
 
 gem "rack", "~> 3.0"
 gem "sinatra", "~> 4.0"
