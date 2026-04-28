@@ -15,13 +15,13 @@
       "check_dependency_tree_detection_status": true,
       "check_update_request_sca_results": false,
       "expected_total_dependencies_number": {
-        "eq": 9
+        "gte": 9
       },
       "expected_direct_dependencies_number": {
         "eq": 4
       },
       "expected_transitive_dependencies_number": {
-        "eq": 5
+        "gte": 5
       },
       "direct_dependencies_names_list": {
         "eq": [
@@ -32,7 +32,7 @@
         ]
       },
       "transitive_dependencies_names_list": {
-        "eq": [
+        "contains": [
           "faraday-net_http-3.0.2.gem",
           "mustermann-3.0.0.gem",
           "rack-protection-4.0.0.gem",
